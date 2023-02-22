@@ -198,7 +198,11 @@ func CreateCommand(execData virtcontainers.ExecData, container *container) *Comm
 	files, _ := ioutil.ReadDir("/run/containerd/io.containerd.runtime.v2.task/default/"+ container.id +"/rootfs")
 	for _, file := range files {
 		if !file.IsDir(){
-			cmdString = cmdString+" "+file.Name()
+			if strings.HasSuffix(file.Name(),".xclbin"){
+			    cmdString = cmdString+" "+file.Name()
+			 } else {
+			    continue
+		    }
 		}
 	}
 	shimLog.WithField("BinaryType", execData.BinaryType).WithFields(logF).Error("exec info")
