@@ -119,7 +119,7 @@ if [ -z ${XILINX_XRT} ]; then
 fi
 
 if [ -z ${INCLUDEOS_PREFIX} ]; then
-  echo "Error: INCLUDEOS_PREFIX is not set. Please install Funky OS."
+  echo "Error: INCLUDEOS_PREFIX is not set. Please install F3 unikernel."
   exit -1
 fi
 

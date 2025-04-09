@@ -158,7 +158,7 @@ func startContainer(ctx context.Context, s *service, c *container) (retErr error
 			return err
 		}
 		os.Setenv("XILINX_XRT", "/opt/xilinx/xrt")
-		os.Setenv("PATH", "/opt/xilinx/xrt/bin:/opt/xilinx/xrt/bin:/opt/xilinx/xrt/bin:/opt/xilinx/xrt/bin:/home/zirong/.local/bin:/home/zirong/.pyenv/plugins/pyenv-virtualenv/shims:/home/zirong/.pyenv/shims:/home/zirong/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/zirong/.local/bin:/home/zirong/.pyenv/plugins/pyenv-virtualenv/shims:/home/zirong/.pyenv/bin:/home/zirong/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zirong/funkyos//bin:/home/zirong/funkyos//bin:/usr/local/go/bin:/home/zirong/go/bin")
+		os.Setenv("PATH", "/opt/xilinx/xrt/bin:/opt/xilinx/xrt/bin:/opt/xilinx/xrt/bin:/opt/xilinx/xrt/bin:/home/zirong/.local/bin:/home/zirong/.pyenv/plugins/pyenv-virtualenv/shims:/home/zirong/.pyenv/shims:/home/zirong/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/zirong/.local/bin:/home/zirong/.pyenv/plugins/pyenv-virtualenv/shims:/home/zirong/.pyenv/bin:/home/zirong/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zirong/f3os//bin:/home/zirong/f3os//bin:/usr/local/go/bin:/home/zirong/go/bin")
 		os.Setenv("LD_LIBRARY_PATH", "/opt/xilinx/xrt/lib:/opt/xilinx/xrt/lib:/opt/xilinx/xrt/lib:/opt/xilinx/xrt/lib:")
 		os.Setenv("PYTHONPATH", "/opt/xilinx/xrt/python:/opt/xilinx/xrt/python:/opt/xilinx/xrt/python:/opt/xilinx/xrt/python:")
 		

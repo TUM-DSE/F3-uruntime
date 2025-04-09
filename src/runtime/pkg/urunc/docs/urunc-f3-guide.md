@@ -379,9 +379,9 @@ Restart `containerd`:
 sudo systemctl restart containerd
 ```
 
-Finally, Copy the funky-monitor `ukvm` in `~/includos/x86_64/lib/ukvm-bin` to `/opt/kata/bin/`
+Finally, Copy the f3-hypervisor `ukvm` in `~/includos/x86_64/lib/ukvm-bin` to `/opt/kata/bin/`
 ```
-cp ~/funkyos/includos/x86_64/lib/ukvm-bin /opt/kata/bin/solo5-hvt
+cp ~/f3os/includos/x86_64/lib/ukvm-bin /opt/kata/bin/solo5-hvt
 ```
 
 #### Recompile:
@@ -470,29 +470,9 @@ sudo kill ... ... ...
 
 
 
-## build [funky-app binary](https://github.com/AtsushiKoshiba/funky-unikernel/blob/vfpga/doc-funky/build-opencl-apps.md)
+## build f3-app binary
 
-- version
-  ```
-	funky-v0.3.1-1-gb9286401c-dirty (x86_64 / 64-bit)
-	commit: b9286401c63525de889d90fd5bc30b79a68709ca
-  ```
-
-The build.sh script located in `funky-unikernel/example/hello_xilinx` can be used to build most of the funky-app
-
-  
-If you see this message when you boot the app:
-  ```
- +--> WARNiNG: Environment unsafe for production
- +--> Stop option enabled. Shutting down now...
-  ```
-
-Change the `for_production` option in the 297th line of `~/funkyos/includeos/post.service.cmake ` to `OFF`:
-
-```
-option(for_production "Stop the OS when conditions not suitable for production" OFF)
-```
-
+Go to the f3-unikernel repo and build your unikernel app. 
 
 # Configuration
 ## Configure to use devmapper
@@ -538,13 +518,13 @@ Use the image-builder script in `kata-containers/src/runtime/pkg/urunc/image-bui
 mkdir data # stores data needed to run the app
 ./build.sh -u hello.binary -i urunc/testhello -e data -c
 
-# Create a urunc/funky:hvt image containing a simple_add.hvt
+# Create a urunc/f3:hvt image containing a simple_add.hvt
 # import it to ctr and run it using solo5
-./build.sh -u simple_add.hvt -i urunc/funky:hvt -e data -c
+./build.sh -u simple_add.hvt -i urunc/f3:hvt -e data -c
 
-# Create a urunc/funky:qemu image containing a simple_add.qemu
+# Create a urunc/f3:qemu image containing a simple_add.qemu
 # import it to ctr and run it using solo5
-./build.sh -u simple_add.qemu -i urunc/funky:qemu -e data -c
+./build.sh -u simple_add.qemu -i urunc/f3:qemu -e data -c
 
 ```
 
@@ -561,7 +541,7 @@ move the bitstream file (e.g: `krnl_vadd.xclbin`) into `data` directory so that 
 # Run
 
 ```
-sudo ctr run --snapshotter devmapper --runtime io.containerd.kata-urunc.v2 --rm docker.io/urunc/funky:hvt FunkyosTest  /unikernel/simple_add.hvt 
+sudo ctr run --snapshotter devmapper --runtime io.containerd.kata-urunc.v2 --rm docker.io/urunc/f3:hvt F3Test /unikernel/simple_add.hvt 
 ```
 
 
@@ -581,9 +561,9 @@ Solution: change go version in go.mod, then run `go mod tidy, go mod vendor`
 Reason: umount failed
 Solution: 
 ```
-# For example the app name is FunkyosTest
-sudo rm -rf /run/containerd/io.containerd.runtime.v2.task/default/FunkyosTest
-sudo umount /run/kata-containers/shared/sandboxes/FunkyosTest/shared
+# For example the app name is F3osTest
+sudo rm -rf /run/containerd/io.containerd.runtime.v2.task/default/F3osTest
+sudo umount /run/kata-containers/shared/sandboxes/F3osTest/shared
 
 # Add the above command in stopContainer Function solves this problem
 ```
